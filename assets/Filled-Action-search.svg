@@ -1,0 +1,15 @@
+<svg id="Filled_Action_search" data-name="Filled/Action/search" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #9195b1;
+      }
+    </style>
+  </defs>
+  <path id="Path" class="cls-1" d="M0,0H20V20H0Z"/>
+  <path id="_Shape_Color" data-name="🎨 Shape Color" class="cls-2" d="M13.334,14.575h0L9.167,10.417V9.758l-.225-.233a5.424,5.424,0,1,1,.584-.583l.233.225h.658l4.158,4.167-1.241,1.241ZM5.416,1.666a3.75,3.75,0,1,0,3.75,3.75A3.754,3.754,0,0,0,5.416,1.666Z" transform="translate(2.5 2.5)"/>
+</svg>

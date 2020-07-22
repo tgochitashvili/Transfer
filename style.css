@@ -1,0 +1,91 @@
+body {
+    font-family: Nunito;
+    font-weight: 500;
+    font-size: 18;
+    color: #282828;
+    margin: 0px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+input[type=text] {
+    position: relative;
+    width: 85%;
+    transform: translate(-50%, 0%);
+    top: 6%;
+    left: 50%;
+    height:52px;
+    font-weight: 0;
+    font-size: 16;
+    border-style: solid;
+    border-radius: 50px;
+    border-width: 1px;
+    border-color:#EEEEEE;
+    background-image:url("assets/Filled-Action-search.svg");
+    background-repeat:no-repeat;
+    background-position: left 15px center;
+    padding-left: 40px;
+}
+
+.transferwindow {
+    position: fixed;
+    width: 677px;
+    height: 460px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    border-width: 1px;
+}
+
+.titlebar {
+    position: relative;
+    background-color: #5265E8;
+    height: 75px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.title{
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+.exitbutton{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    right: 2%;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 35px;
+    background: none;
+    border-style:none;
+    outline: none;
+}
+.exitbutton:hover{
+    color: lightgray;
+}
+#borderbox {
+    position: absolute;
+    border-bottom: 1px solid #1592E6;
+    border-left: 1px solid #1592E6;
+    border-right: 1px solid #1592E6;
+    height: 88%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.agentdata{
+    position: relative;
+}

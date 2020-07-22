@@ -2,8 +2,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="style.css"> 
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
-    <script type="text/javascript" src="assets/firstnames.json"></script>
-    <script type="text/javascript" src="assets/lastnames.json"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <title>Transfer</title>
 </head>
 <body>
     <div class="transferwindow">
@@ -15,13 +15,17 @@
         </div>
         <div id="borderbox"> 
             <input type="text" onfocus="this.placeholder=''" onfocusout="this.placeholder='Search for an agent'" placeholder="Search for an agent">
-            <table>
-                <tr>
-                    <td class="agentdata">
-                        zd
-                    </td>
-                </tr>
-            </table>
+            <div class = "agentlist">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="agentdata">
+                                zd
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

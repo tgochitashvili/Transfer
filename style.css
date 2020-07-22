@@ -89,3 +89,9 @@ input[type=text] {
 .agentdata{
     position: relative;
 }
+
+.agentlist{
+    position: relative;
+    overflow: scroll;
+    height: 310px;
+}

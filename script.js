@@ -28,16 +28,19 @@ $(document).ready(function(){
 });
 function searchAgents(element){
     let input = element.value.toLowerCase();
-    let table = $("search");
     let tr = $("tr");
     for(let i = 0; i < tr.length; i++){
         let currentTR = $(tr[i]);
         let td = currentTR.find("td");
         let tdContent = td[0].innerText.toLowerCase()
-        if(tdContent.includes(input))
-            currentTR.css("display","");
-        else
-            currentTR.css("display","none");
+        if(tdContent.includes(input)){
+            td.slideDown(400);
+            currentTR.slideDown(100);
+        }
+        else{
+            td.slideUp(400);
+            currentTR.slideUp(100);
+        }
     }
 }
 function searchOnFocus(element){

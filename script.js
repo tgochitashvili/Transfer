@@ -1,26 +1,51 @@
-let numAgents = Math.ceil(Math.random()*25);
-let names = [];
-$.when(
-    $.getJSON("assets/firstnames.json"),
-    $.getJSON("assets/lastnames.json")
-).done(function(fnames, lnames) {
-    let fullnames = [];
-    for (var i = 0; i < numAgents; i++)
-        fullnames.push(randomchoice(fnames[0]) + " " + randomchoice(lnames[0]));
-    
-    function randomchoice(data){
-        return data[Math.floor(Math.random()*data.length)];
-    }
-    function generateTable(table, data) {
-        for (let element of data) {
-          let row = table.insertRow();
-          for (key in element) {
-            let cell = row.insertCell();
-            let text = document.createTextNode(element[key]);
-            cell.appendChild(text);
-          }
+$(document).ready(function(){
+    let numAgents = Math.ceil(Math.random()*25);
+    let names = [];
+    $.when(
+        $.getJSON("assets/firstnames.json"),
+        $.getJSON("assets/lastnames.json")
+    ).done(function(fnames, lnames) {
+        let fullnames = [];
+        for (var i = 0; i < numAgents; i++)
+            fullnames.push(randomChoice(fnames[0]) + " " + randomChoice(lnames[0]));
+        
+        function randomChoice(data){
+            return data[Math.floor(Math.random()*data.length)];
         }
-    }
-    let table = document.querySelector("table");
-    generateTable(table, fullnames);
+        function generateTable(table, data) {
+            for (let element of data) {
+            let row = table.insertRow();
+            let cell = row.insertCell();
+            let text = document.createTextNode(element);
+            cell.appendChild(text);
+            }
+        }
+        let table = document.querySelector("table");
+        generateTable(table, fullnames);
+        
+    });
+
 });
+function searchAgents(element){
+    let input = element.value.toLowerCase();
+    let table = $("search");
+    let tr = $("tr");
+    for(let i = 0; i < tr.length; i++){
+        let td = $(tr[i]).find("td");
+        let tdContent = td[0].innerText.toLowerCase()
+        if(!tdContent.includes(input)){
+            $(tr[i]).css("display","none");
+            console.log(tr);
+        }
+        else
+            $(tr[i]).css("display","");
+            
+    }
+}
+function searchOnFocus(element){
+    element.placeholder='';
+}
+
+function searchOnFocusOut(element){
+    element.placeholder='Search for an agent';
+}

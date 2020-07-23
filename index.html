@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"> 
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <script type="text/javascript" src="jquery.min.js"></script>
+    <script src="script.js"></script>
     <title>Transfer</title>
 </head>
 <body>
@@ -14,20 +15,13 @@
             <button class="exitbutton" >&times</button>
         </div>
         <div id="borderbox"> 
-            <input type="text" onfocus="this.placeholder=''" onfocusout="this.placeholder='Search for an agent'" placeholder="Search for an agent">
+            <input id = "search" type="text" onfocus="searchOnFocus(this)" onfocusout="searchOnFocusOut(this)" placeholder="Search for an agent" onkeyup="searchAgents(this)">
             <div class = "agentlist">
                 <table>
                     <tbody>
-                        <tr>
-                            <td class="agentdata">
-                                zd
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
-
 </body>

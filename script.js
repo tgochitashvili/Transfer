@@ -14,10 +14,10 @@ $(document).ready(function(){
         }
         function generateTable(table, data) {
             for (let element of data) {
-            let row = table.insertRow();
-            let cell = row.insertCell();
-            let text = document.createTextNode(element);
-            cell.appendChild(text);
+                let row = table.insertRow();
+                let cell = row.insertCell();
+                let text = document.createTextNode(element);
+                cell.appendChild(text);
             }
         }
         let table = document.querySelector("table");
@@ -31,15 +31,13 @@ function searchAgents(element){
     let table = $("search");
     let tr = $("tr");
     for(let i = 0; i < tr.length; i++){
-        let td = $(tr[i]).find("td");
+        let currentTR = $(tr[i]);
+        let td = currentTR.find("td");
         let tdContent = td[0].innerText.toLowerCase()
-        if(!tdContent.includes(input)){
-            $(tr[i]).css("display","none");
-            console.log(tr);
-        }
+        if(tdContent.includes(input))
+            currentTR.css("display","");
         else
-            $(tr[i]).css("display","");
-            
+            currentTR.css("display","none");
     }
 }
 function searchOnFocus(element){

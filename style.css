@@ -61,11 +61,12 @@ input[type=text] {
     width: 677px;
     height: 460px;
     transform: translate(-50%, -50%);
-    top: 50%;
+    top: 35%;
     left: 50%;
     background-color: white;
     border-width: 1px;
     box-shadow: 0px 15px 15px #06105825;
+    display: none;
 }
 
 .titlebar {
@@ -90,13 +91,12 @@ input[type=text] {
     transform: translate(-50%, -50%);
     top: 50%;
     right: 2%;
-    background: none;
-    border: none;
     color: white;
     font-size: 35px;
     background: none;
     border-style:none;
     outline: none;
+    border: none;
 }
 .exitbutton:hover{
     color: lightgray;
@@ -146,4 +146,29 @@ tr.inactive img{
 }
 td > *{
     vertical-align: middle;
+}
+
+.toggletransfer{
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 70%;
+    left: 50%;
+    color: black;
+    font-size: 20px;
+    background: #1592E6;
+    border-radius: 100px;
+    box-sizing: border-box;
+    height: 45px;
+    width: 100px;
+    border-style:none;
+    outline: none;
+    border: none;
+}
+
+button.transferbutton{
+    background: #5265E8;
+    content: "Transfer";
+}
+tr.inactive td > button.transferbutton{
+    background: gray;
 }

@@ -1,3 +1,5 @@
+var bVisible = false;
+var secondsToRandomize = 2;
 $(document).ready(function(){
     let numAgents = Math.ceil(Math.random()*50);
     $.when(
@@ -14,7 +16,6 @@ $(document).ready(function(){
         for (var i = 0; i < numAgents; i++)
             fullnames.push(randomChoice(fnames[0]) + " " + randomChoice(lnames[0]));
         let tbody = $("table").find("tbody");
-
         for(var name of fullnames){
             var rand = Math.round(Math.random());
             var status = rand?"active":"inactive";
@@ -27,11 +28,9 @@ $(document).ready(function(){
             ];
             tbody.append("<tr class = '"+ status + "'>" + agent + "</tr>");
         }
+        let tr = tbody.find("tr");
+        let intervalID = window.setInterval(randomizeStatus,secondsToRandomize*1000,tr);
         
-
-        function TD(text){
-
-        }
         function randomChoice(data){
             return data[Math.floor(Math.random()*data.length)];
         }       
@@ -44,8 +43,8 @@ function searchAgents(element){
     for(let i = 0; i < tr.length; i++){
         let currentTR = $(tr[i]);
         let td = currentTR.find("td");
-        let tdContent = td[1].innerText.toLowerCase()
-        if(tdContent.includes(input)){
+        let agentName = td[1].innerText.toLowerCase()
+        if(agentName.includes(input)){
             td.slideDown(400);
             currentTR.slideDown(250);
         }
@@ -58,7 +57,40 @@ function searchAgents(element){
 function searchOnFocus(element){
     element.placeholder='';
 }
-
 function searchOnFocusOut(element){
     element.placeholder='Search for an agent';
+}
+function toggleWindow(){
+    var window = $(".transferwindow");
+    var toggle = $(".toggletransfer");
+    if(bVisible){
+        window.slideUp();
+        toggle.slideDown();
+        bVisible = false;
+    }
+    else{
+        toggle.slideUp();
+        window.slideDown();
+        bVisible = true;    
+    }
+}
+function randomizeStatus(tr){
+    for(var tri of tr){
+        var rand = Math.round(Math.random());
+        var status = tri.classList.contains("active");
+        var td = $(tri).find("td");
+        if(rand && !status){
+            tri.classList.remove("inactive");
+            tri.classList.add("active");
+            td[2].innerText = "Online";
+        }
+        else if(!rand && status){
+            tri.classList.add("inactive");
+            tri.classList.remove("active");
+            td[2].innerText = "Offline";
+        }
+        // let currentTR = $(tr[i]);
+        // let td = currentTR.find("td");
+        // let tdContent = td[2];
+    }
 }

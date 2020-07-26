@@ -12,7 +12,7 @@
             <div class="title">
                 Transfer the conversation
             </div>
-            <button class="exitbutton" >&times</button>
+            <button class="exitbutton" onclick="toggleWindow()">&times</button>
         </div>
         <div id="borderbox"> 
             <input id = "search" type="text" onfocus="searchOnFocus(this)" onfocusout="searchOnFocusOut(this)" placeholder="Search for an agent" onkeyup="searchAgents(this)">
@@ -24,4 +24,5 @@
             </div>
         </div>
     </div>
+    <button class="toggletransfer" onclick="toggleWindow()">toggle</button>
 </body>

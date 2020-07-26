@@ -19,6 +19,9 @@ table {
     left: 50%;
     width: 658px;
 }
+td{
+    padding-left: 10px;
+}
 tr{
     border-style: solid;
     border-color: black;

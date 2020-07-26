@@ -126,8 +126,10 @@ input[type=text] {
     display: none;  /* Safari and Chrome */
 }
 
+
 img.avatar{
     height:36px;
+    width:36px;
     border-radius: 100px;
 }
 tr.active td.status{

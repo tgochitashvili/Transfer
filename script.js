@@ -1,3 +1,4 @@
+var filter = "neutral";
 var bVisible = false;
 var secondsToRandomize = 2;
 $(document).ready(function(){
@@ -40,9 +41,9 @@ $(document).ready(function(){
 function searchAgents(element){
     let input = element.value.toLowerCase();
     let tr = $("tr");
-    for(let i = 0; i < tr.length; i++){
-        let currentTR = $(tr[i]);
-        let td = currentTR.find("td");
+    for(let tri of tr){
+        let currentRow = $(tri);
+        let td = currentRow.find("td");
         let agentName = td[1].innerText.toLowerCase()
         if(agentName.includes(input)){
             td.slideDown(400);
@@ -51,6 +52,56 @@ function searchAgents(element){
         else{
             td.slideUp(400);
             currentTR.slideUp(250);
+        }
+    }
+}
+function filterStatus(button){
+    // neutral >> online >> offline >> neutral
+    var filter = "neutral";
+    if(button.classList.contains("neutral")){
+        button.classList.remove("neutral");
+        button.classList.add("online");
+        filter = "online";
+    }
+    else if(button.classList.contains("online")){
+        button.classList.remove("online");
+        button.classList.add("offline");
+        filter = "offline";
+    }
+    else if(button.classList.contains("offline")){
+        button.classList.remove("offline");
+        button.classList.add("neutral");
+        filter = "neutral";
+    }
+    let tr = $("tr");
+    for(let tri of tr){
+        let currentRow = $(tri);
+        td = currentRow.find("td");
+        switch(filter){
+            case "neutral":
+                td.slideDown();
+                currentRow.slideDown();
+                break;
+            case "online":
+                if(td[2].innerText=="Online"){
+                    td.slideDown();
+                    currentRow.slideDown();
+                }
+                else{
+                    td.slideUp();
+                    currentRow.slideUp();
+                }
+                break;
+            case "offline":
+                if(td[2].innerText=="Offline"){
+                    td.slideDown();
+                    currentRow.slideDown();
+                }
+                else{
+                    td.slideUp();
+                    currentRow.slideUp();
+                }
+
         }
     }
 }

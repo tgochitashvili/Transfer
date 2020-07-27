@@ -47,11 +47,11 @@ function searchAgents(element){
         let agentName = td[1].innerText.toLowerCase()
         if(agentName.includes(input)){
             td.slideDown(400);
-            currentTR.slideDown(250);
+            currentRow.slideDown(250);
         }
         else{
             td.slideUp(400);
-            currentTR.slideUp(250);
+            currentRow.slideUp(250);
         }
     }
 }
@@ -100,8 +100,7 @@ function filterStatus(button){
                 else{
                     td.slideUp();
                     currentRow.slideUp();
-                }
-
+                }  
         }
     }
 }

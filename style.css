@@ -61,7 +61,7 @@ input[type=text] {
     width: 677px;
     height: 460px;
     transform: translate(-50%, -50%);
-    top: 35%;
+    top: 50%;
     left: 50%;
     background-color: white;
     border-width: 1px;
@@ -153,11 +153,11 @@ td > *{
 .toggletransfer{
     position: fixed;
     transform: translate(-50%, -50%);
-    top: 70%;
+    top: 50%;
     left: 50%;
-    color: black;
+    color: white;
     font-size: 20px;
-    background: #1592E6;
+    background: #5265E8;
     border-radius: 100px;
     box-sizing: border-box;
     height: 45px;

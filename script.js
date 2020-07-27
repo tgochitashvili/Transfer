@@ -21,7 +21,7 @@ $(document).ready(function(){
             var rand = Math.round(Math.random());
             var status = rand?"active":"inactive";
             var agent=[
-                "<td><img class='avatar' src='https://picsum.photos/200?"+Math.floor(Math.random()*1000)+"'></td>",
+                "<td><img class='avatar' src='https://picsum.photos/200?" + Math.floor(Math.random()*1000)+"'></td>",
                 "<td>" + name + "</td>",
                 "<td class='status'>" + (rand?"Online":"Offline") + "</td>",
                 "<td>" + randomChoice(departments) + "</td>",

@@ -41,7 +41,7 @@ $(document).ready(function(){
 function searchAgents(element){
     let input = element.value.toLowerCase();
     let tr = $("tr");
-    for(let tri of tr){
+    for(let tri of tr){ 
         let currentRow = $(tri);
         let td = currentRow.find("td");
         let agentName = td[1].innerText.toLowerCase()

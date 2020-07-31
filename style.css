@@ -86,7 +86,7 @@ input[type=text] {
     top: 50%;
     left: 50%;
 }
-.exitbutton{
+button.exitbutton{
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -98,16 +98,13 @@ input[type=text] {
     outline: none;
     border: none;
 }
-.exitbutton:hover{
-    color: lightgray;
+
+button.exitbutton:hover{
+    color: rgba(211, 211, 211, 0.377);
+    transform: translate(-50%, calc(-50% - 2px));
 }
 #borderbox {
     position: absolute;
-/*     
-    border-bottom: 1px solid #1592E6;
-    border-left: 1px solid #1592E6;
-    border-right: 1px solid #1592E6; 
-*/
     height: 84%;
     width: 100%;
     box-sizing: border-box;
@@ -150,8 +147,8 @@ td > *{
     vertical-align: middle;
 }
 
-.toggletransfer{
-    position: fixed;
+button.toggletransfer{
+    position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
@@ -165,6 +162,16 @@ td > *{
     border-style:none;
     outline: none;
     border: none;
+    backface-visibility: hidden;
+}
+
+button.toggletransfer:hover{
+    transform: translate(-50%, calc(-50% - 5px));
+    box-shadow: 0 5px 7px #4140663f;
+}
+button.toggletransfer:active{
+    transform: translate(-50%,calc(-50% - 2px));
+    box-shadow: 0 2px 3px #4140663f;
 }
 
 button.transferbutton{
@@ -172,6 +179,7 @@ button.transferbutton{
     content: "Transfer";
     border-radius: 100px;
 }
+
 tr.inactive td > button.transferbutton{
     background: gray;
 }

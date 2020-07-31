@@ -103,6 +103,11 @@ button.exitbutton:hover{
     color: rgba(211, 211, 211, 0.377);
     transform: translate(-50%, calc(-50% - 2px));
 }
+
+button.exitbutton:active{
+    transform: translate(-50%, calc(-50% - 1px));
+}
+
 #borderbox {
     position: absolute;
     height: 84%;

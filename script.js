@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 var filter = "neutral";
 var bVisible = false;
 var secondsToRandomize = 2;
@@ -44,7 +45,7 @@ function searchAgents(element){
     for(let tri of tr){ 
         let currentRow = $(tri);
         let td = currentRow.find("td");
-        let agentName = td[1].innerText.toLowerCase()
+        let agentName = td[1].innerText.toLowerCase();
         if(agentName.includes(input)){
             td.slideDown(400);
             currentRow.slideDown(250);

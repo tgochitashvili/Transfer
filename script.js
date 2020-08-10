@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
-var filter = "online";
-var bVisible = false;
-var secondsToRandomize = 100;
+var filter = "all"; //default search filter
+var bVisible = false; //default window visibility
+var secondsToRandomize = 2;
 $(document).ready(function(){
     let numAgents = Math.ceil(Math.random()*50);
     $.when(
@@ -23,7 +23,7 @@ $(document).ready(function(){
             var status = rand?"active":"inactive";
             var agent=[
                 "<td><img class='avatar' src='https://picsum.photos/200?" + Math.floor(Math.random()*1000)+"'></td>",
-                "<td>" + name + "</td>",
+                "<td class='name'>" + name + "</td>",
                 "<td class='status'>" + (rand?"Online":"Offline") + "</td>",
                 "<td>" + randomChoice(departments) + "</td>",
                 "<td class='serving'>Serving " + Math.floor(Math.random()*15) + "</td>" 
@@ -50,20 +50,19 @@ function searchAgents(element){
         let td = currentRow.find("td");
         let agentName = td[1].innerText.toLowerCase();
         let status = "";
-        let bIncludes = agentName.includes(input);
         if (filter==="all"){
             status = filter;
         }
         else
             status = td[2].innerText.toLowerCase();
         
-        if(filter===status && bIncludes){
-            td.slideDown(400);
-            currentRow.slideDown(250);
+        if(filter===status && agentName.includes(input)){
+            td.slideDown("fast");
+            currentRow.slideDown("slow");
         }
         else{
-            td.slideUp(400);
-            currentRow.slideUp(250);  
+            td.slideUp("fast");
+            currentRow.slideUp("slow");  
         }
         // if(input!==""){
         //     if(agentName.includes(input)){
@@ -85,8 +84,10 @@ function searchAgents(element){
         //     td.slideDown(400);
         //     currentRow.slideDown(250);
         // }
+
     }
 }
+
 // function filterStatus(button){
 //     // neutral >> online >> offline >> neutral
 //     var filter = "neutral";
@@ -175,4 +176,5 @@ function randomizeStatus(tr){
             td[2].innerText = "Offline";
         }
     }
+    searchAgents(document.getElementById("search"));
 }

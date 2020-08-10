@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
-var filter = "neutral";
+var filter = "online";
 var bVisible = false;
-var secondsToRandomize = 2;
+var secondsToRandomize = 100;
 $(document).ready(function(){
     let numAgents = Math.ceil(Math.random()*50);
     $.when(
@@ -37,7 +37,10 @@ $(document).ready(function(){
             return data[Math.floor(Math.random()*data.length)];
         }       
     });
-
+    $("input[name='filter']").click(function(){
+        filter=$(this).attr("value");
+        searchAgents(document.getElementById("search"));
+    });
 });
 function searchAgents(element){
     let input = element.value.toLowerCase();
@@ -46,65 +49,96 @@ function searchAgents(element){
         let currentRow = $(tri);
         let td = currentRow.find("td");
         let agentName = td[1].innerText.toLowerCase();
-        if(agentName.includes(input)){
+        let status = "";
+        let bIncludes = agentName.includes(input);
+        if (filter==="all"){
+            status = filter;
+        }
+        else
+            status = td[2].innerText.toLowerCase();
+        
+        if(filter===status && bIncludes){
             td.slideDown(400);
             currentRow.slideDown(250);
         }
         else{
             td.slideUp(400);
-            currentRow.slideUp(250);
+            currentRow.slideUp(250);  
         }
+        // if(input!==""){
+        //     if(agentName.includes(input)){
+        //         if(filter===status){
+        //             td.slideDown(400);
+        //             currentRow.slideDown(250);
+        //         }
+        //         else {
+        //             td.slideUp(400);
+        //             currentRow.slideUp(250);      
+        //         }
+        //     }
+        //     else{
+        //         td.slideUp(400);
+        //         currentRow.slideUp(250);    
+        //     }  
+        // }
+        // else{
+        //     td.slideDown(400);
+        //     currentRow.slideDown(250);
+        // }
     }
 }
-function filterStatus(button){
-    // neutral >> online >> offline >> neutral
-    var filter = "neutral";
-    if(button.classList.contains("neutral")){
-        button.classList.remove("neutral");
-        button.classList.add("online");
-        filter = "online";
-    }
-    else if(button.classList.contains("online")){
-        button.classList.remove("online");
-        button.classList.add("offline");
-        filter = "offline";
-    }
-    else if(button.classList.contains("offline")){
-        button.classList.remove("offline");
-        button.classList.add("neutral");
-        filter = "neutral";
-    }
-    let tr = $("tr");
-    for(let tri of tr){
-        let currentRow = $(tri);
-        td = currentRow.find("td");
-        switch(filter){
-            case "neutral":
-                td.slideDown();
-                currentRow.slideDown();
-                break;
-            case "online":
-                if(td[2].innerText=="Online"){
-                    td.slideDown();
-                    currentRow.slideDown();
-                }
-                else{
-                    td.slideUp();
-                    currentRow.slideUp();
-                }
-                break;
-            case "offline":
-                if(td[2].innerText=="Offline"){
-                    td.slideDown();
-                    currentRow.slideDown();
-                }
-                else{
-                    td.slideUp();
-                    currentRow.slideUp();
-                }  
-        }
-    }
-}
+// function filterStatus(button){
+//     // neutral >> online >> offline >> neutral
+//     var filter = "neutral";
+//     if(button.classList.contains("neutral")){
+//         button.classList.remove("neutral");
+//         button.classList.add("online");
+//         filter = "online";
+//     }
+//     else if(button.classList.contains("online")){
+//         button.classList.remove("online");
+//         button.classList.add("offline");
+//         filter = "offline";
+//     }
+//     else if(button.classList.contains("offline")){
+//         button.classList.remove("offline");
+//         button.classList.add("neutral");
+//         filter = "neutral";
+//     }
+//     let tr = $("tr");
+//     for(let tri of tr){
+//         let currentRow = $(tri);
+//         td = currentRow.find("td");
+//         switch(filter){
+//             case "neutral":
+//                 td.slideDown();
+//                 currentRow.slideDown();
+//                 break;
+//             case "online":
+//                 if(td[2].innerText=="Online"){
+//                     td.slideDown();
+//                     currentRow.slideDown();
+//                 }
+//                 else{
+//                     td.slideUp();
+//                     currentRow.slideUp();
+//                 }
+//                 break;
+//             case "offline":
+//                 if(td[2].innerText=="Offline"){
+//                     td.slideDown();
+//                     currentRow.slideDown();
+//                 }
+//                 else{
+//                     td.slideUp();
+//                     currentRow.slideUp();
+//                 }  
+//         }
+//     }
+// }
+
+
+
 function searchOnFocus(element){
     element.placeholder='';
 }
@@ -140,8 +174,5 @@ function randomizeStatus(tr){
             tri.classList.remove("active");
             td[2].innerText = "Offline";
         }
-        // let currentTR = $(tr[i]);
-        // let td = currentTR.find("td");
-        // let tdContent = td[2];
     }
 }
